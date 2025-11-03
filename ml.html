@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Machine Learning - Alfredo David Galván</title>
+    <style>
+        /* Modo oscuro con escala de grises */
+        :root {
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --border-color: #333;
+            --link-color: #90caf9;
+            --link-hover: #bbdefb;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Menú lateral izquierdo */
+        .sidebar {
+            width: 250px;
+            background-color: var(--bg-secondary);
+            padding: 20px 0;
+            border-right: 1px solid var(--border-color);
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            color: var(--text-secondary);
+            padding: 0 20px;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li {
+            margin: 0;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--text-primary);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .sidebar a:hover {
+            background-color: var(--bg-primary);
+            color: var(--link-hover);
+        }
+
+        /* Contenido principal */
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-area {
+            flex: 1;
+            position: relative;
+            min-height: 0;
+        }
+
+        /* Secciones de contenido */
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: var(--text-primary);
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            margin: 5px 0 0;
+            font-size: 1.1em;
+        }
+
+        /* Sección UML */
+        .uml-section {
+            text-align: center;
+        }
+
+        .uml-section h2 {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .uml-image {
+            max-width: 100%;
+            height: auto;
+            filter: grayscale(100%);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
+            .main-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menú lateral izquierdo -->
+    <nav class="sidebar">
+        <h2>Menú</h2>
+        <ul>
+            <li><a onclick="showSection('header')">Alfredo David Galván</a></li>
+            <li><a href="https://claude.ai/public/artifacts/d6ca414a-ba35-4e57-b5a5-942bb914cf20" target="_blank">Librerías Utilizadas en el Proyecto</a></li>
+            <li><a href="https://claude.ai/public/artifacts/c0afad56-06dd-4144-b8ae-9c2ce0a1e340" target="_blank">Carga de Datos</a></li>
+            <li><a href="https://claude.ai/public/artifacts/9a0b3244-1f82-42c3-8933-b5df20eaf865" target="_blank">Preprocesamiento de Datos</a></li>
+            <li><a href="https://claude.ai/public/artifacts/5960260b-7acf-41ee-b9f7-fe152a63c618" target="_blank">Encontrar el Número Óptimo de Clusters (k)</a></li>
+            <li><a href="https://claude.ai/public/artifacts/9191dceb-2476-4e0f-9b17-2b8a91b3f117" target="_blank">Armado gráfica: VARONES: Matemáticas vs Lectura</a></li>
+            <li><a onclick="showSection('uml')">Algoritmos Machine Learning (UML)</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <div class="content-area">
+            <!-- Sección Header -->
+            <section id="header-section" class="content-section active">
+                <div class="header">
+                    <h1>Alfredo David Galván</h1>
+                    <p>alfredodgalvan@gmail.com</p>
+                </div>
+            </section>
+
+            <!-- Sección UML -->
+            <section id="uml-section" class="content-section">
+                <div class="uml-section">
+                    <h2>Algoritmos Machine Learning</h2>
+                    <img src="http://www.plantuml.com/plantuml/png/bLFBRi8m4Bpp5NkaaV8FX21G1OaeK0wzRPqbMIcsKzjGyVVTa411eOTU8djczZNhJ7n05pIRGcCpYY13LR4XM14wmwQ4f2wjur1fFueYs1uRSYVsLDmK0aUGrkWz7rXXO6jQA88S-KGmnJFv3bZPadrW1Hig7Od-gbp6kIGZ7o0dBgjFws2ypFENZjsWAQo6kMqL7IHjDDO5s9CA8husFTxkiqlGeCAC5BSts3cYFWVhffP19H3T820xre5Fw1W33SYL36iVKNWt_azlZZwGww_jj1cXyGDyDjscIJw0rt9Kt60DgTMDDMG290Rhi-UBhv18CuhlZ7yr1JKa7r4-ZubWxkZhsC9h35BDmCBPxr1rPD8ubgN_xhwhOwoM5E9b4DjlrJvYhsGr3sBOakRuFuybjV7E8VSQyPRDmJf5kktn8Jgp1TNn_BR7j_W9FKMfsY-hPI5Kr54Tk92dUGzEnAx-9_W1" alt="Diagrama Mindmap de Algoritmos de Machine Learning" class="uml-image">
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        function showSection(sectionId) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Mostrar la sección solicitada
+            document.getElementById(sectionId + '-section').classList.add('active');
+        }
+
+        // Inicialmente mostrar header
+        showSection('header');
+    </script>
+</body>
+</html>
